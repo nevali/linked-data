@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="UTF-8">
+	<title>“Papers Please!” - Linked Data: A Practical Guide</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+  </head>
+  <body>
+	<article>
+	  <hgroup>
+		<h1>“Papers Please!”</h1>
+		<h2>(or: the importance of identification)</h2>
+	  </hgroup>
+	  <h2>URIs, URLs, URNs…</h2>
+	  <p>
+		In the world of Linked Data, we identify everything with URIs. While
+		you’re probably used to dealing with URLs, you may find the term 
+		“URIs” unfamiliar. Put simply,
+		URIs are the general form of URLs: the “I” stands for <i>identifier</i>
+		(as opposed to the “L” which stands for <i>locator</i>). All URIs do
+		is <em>identify</em> something in an unambiguous way. URLs, on the
+		other hand, are a kind of URI which you can use to <em>locate</em>
+		something.
+	  </p>
+	  <p>
+		In the Web of documents, we only ever identify documents, albeit
+		of varying shapes, sizes and varieties, and we do so such that
+		software (upon human instruction) can follow those links by
+		locating the resource it identifies.
+	  </p>
+	  <p>
+		In the Web of Linked Data, we don't just identify documents: we also
+		identify abstract concepts and physical things. After all, what good
+		would Linked Data be if we could only publish data about documents
+		on websites?
+	  </p>
+	  <p>
+		For a while, this posed a little bit of a problem: we need to
+		distinguish between data about documents and data about other kinds of
+		things, so we probably need different kinds of URIs for one as opposed
+		to the other.
+	  </p>
+	  <p>
+		The solution is surely simple! We can use something abstract, such
+		as URNs (“Universal Resource <i>Names</i>”), to identify the concepts
+		and physical objects, sticking with URLs for resources on the Web.
+	  </p>
+	  <p>
+		Using URNs for this brings with it a whole new problem: the
+		point of Linked Data is that you
+		can join the dots between pieces of data published all over the
+		Web. If you use a kind of URI which can’t be used as a <em>locator</em>,
+		then how on earth can a piece of software follow the link from one
+		piece of data to another?
+	  </p>
+	  <p>
+		Sure, you could load up a big database with a copy of all of the data 
+		you want to cross-reference, and use all of the URIs just as you
+		might a key in a relational database system, but as though it’s
+		sometimes useful to be able to do that, if you <em>have to</em> in
+		order to just follow links, it’s not very much like the Web, is it?
+	  </p>
+	  <p>
+		To be as useful to software as the Web of documents is to
+		people, all of the URIs in Linked Data need to be URLs—they need to
+		be <em>resolveable</em>, and they need to be resolveable automatically,
+		without human intervention or prior knowledge, exactly as links between
+		HTML documents are.
+	  </p>
+	  <p>
+		So, we’re back to square one. We need to use URLs for Linked Data
+		to fulfil its potential, but we still need a way to distinguish between
+		data about documents and data about other things.
+	  </p>
+	  <h2>Fragments</h2>
+	  <p>
+		A little while ago, Sir Tim Berners-Lee arrived at a neat solution for
+		this problem, and most people publishing Linked Data have now accepted
+		it as part of their normal practice. The solution was this: the
+		<i>fragment identifier</i>. When referring to HTML, the fragment
+		identifier in a URL (the portion after the hash—#—sign) is used to
+		reference a specific anchor within that document—but that’s just
+		how HTML uses them. In other contexts, the fragment identifier can
+		be used for something else entirely.
+	  </p>
+	  <p>
+		Based upon this, a convention arose: when Linked Data needs to
+		identify a document, we use the URL of that document as normal. When
+		we need to refer to something which isn't a concept—whether it’s
+		physical or conceptual, fictional or factual—we append a fragment
+		identifier. It can be anything: <code>#thing</code>,
+		<code>#person</code>, <code>#me</code>, <code>#timbl</code>—it
+		doesn’t matter <em>what</em> you use, so long as it's used
+		consistently!
+	  </p>
+	  <p>
+		This convention works well, by and large (save for a few esoteric
+		edge-cases which are more the cause of head-scratching amongst
+		people who enjoy figuring out the answers to hard philosophical
+		problems, than practical issues for most people). It’s also very
+		useful, in a way which you might have spotted already.
+	  </p>
+	  <p>
+		HTTP clients never actually send the fragment identifier in a URL
+		to a Web server. That is, requests for
+		<code>http://example.com/things/1</code>,
+		<code>http://example.com/things/1#thing</code> and 
+		<code>http://example.com/things/1#item</code> would all result in
+		the same resource being requested from the <code>example.com</code>
+		Web server.
+	  </p>
+	  <p>
+		The convention of using fragment identifiers as a distinguishing
+		mark bore out a further convention: that the document at the URL
+		without the fragment identifier contains the data <em>about</em>
+		the things at the URLs which have them. In other words,
+		the document you get back from <code>http://example.com/things/1</code>
+		<i>describes</i> the thing identified as <code>http://example.com/things/1#thing</code>.
+	  </p>
+	  <h2>The mint with the whole</h2>
+	</article>
+  </body>
+</html>
+

@@ -1,0 +1,30 @@
+* { font-family: Baskerville, Georgia; }
+code, pre, samp { font-family: Monaco, Consolas, 'Courier New', Courier; font-size: 67%; }
+
+hgroup {
+	display: block;
+	margin: 0 0 2em 0;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; margin: 10px 0 10px 0; padding: 0 }
+
+h1 { font-size: 56pt; font-style: italic; }
+h1 em { text-decoration: underline; }
+h2 { font-size: 24pt; font-style: italic; }
+h3 { font-size: 22pt; }
+
+hgroup h2 { font-size: 24pt; margin-left: 32px; font-style: normal; }
+
+p, ol, ul, li, dl, dt, dd { font-size: 16pt; line-height: 1.4em; }
+
+article > h1 + p:first-letter, article > hgroup + p:first-letter {
+	font-size: 48pt;
+	float: left;
+	line-height: 1.0em;
+	margin: 0 4px -0.2em 0;
+	padding: 0;
+}
+
+article p { margin-left: 64pt; margin-right: 64pt; text-align: justify; }
+article ol, article ul { margin-left: 64pt; margin-right: 64pt; }
+article > h2, article > h3 { margin-left: 40pt; }
